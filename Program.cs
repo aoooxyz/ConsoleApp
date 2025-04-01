@@ -5,15 +5,12 @@ namespace consoleapp  //定义命名空间consoleapp
 	{
         static void Main(string[] args) //主方法，程序的入口
 		{
-		    Test.str = "奈非天";  //直接通过类名Test访问静态字段str并赋值
-			Console.WriteLine(Test.str);  //输出当前str的值
 			Test test1 = new Test();  //创建Test类的实例对象test1
-			test1.getStr();  //调用getStr()方法(输出str的值)
+			test1.setStr("奈非天");  //调用test1的setStr()方法(赋值为"奈非天")
+			Test.getStr();  //调用静态方法getStr()输出静态字段str
 			Test test2 = new Test();  //创建Test类的实例对象test2
-			test2.getStr();  //调用getStr()方法(输出str的值)
 			test2.setStr("莉莉丝");  //调用test2的setStr()方法(赋值为"莉莉丝")
-			test1.getStr();  //由于str是静态字段,所有对象共享,所以test1.getStr()也会输出"莉莉丝"
-			test2.getStr();
+			Test.getStr();  //调用静态方法getStr()输出静态字段str
 		}
 	}
 	public class Test  //定义Test类
@@ -23,7 +20,7 @@ namespace consoleapp  //定义命名空间consoleapp
 		{
 		    str = s;  //直接修改静态字段str
 		}
-		public void getStr()  //定义实例方法getStr，用于输出静态字段str的值
+		public static void getStr()  //定义实例方法getStr，用于输出静态字段str的值
 		{
 		    Console.WriteLine(str);  //输出静态字段str的值
 		}
